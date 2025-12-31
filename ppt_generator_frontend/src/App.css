@@ -432,7 +432,13 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--ocean-shadow);
   overflow: hidden;
-  min-height: 520px;
+
+  /* Landscape 16:9 slide frame (matches pptx.layout = LAYOUT_WIDE) */
+  aspect-ratio: 16 / 9;
+
+  /* Keep it responsive but not too small */
+  width: 100%;
+  max-width: 980px;
 }
 
 .SlideAccent {
@@ -513,6 +519,13 @@
   cursor: pointer;
   box-shadow: var(--ocean-shadow-sm);
   transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+
+  /* Make thumbs feel like mini landscape slides */
+  aspect-ratio: 16 / 9;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  overflow: hidden;
 }
 
 .Thumb:hover {

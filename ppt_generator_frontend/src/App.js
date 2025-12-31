@@ -126,7 +126,10 @@ function App() {
   async function generatePptxBlob() {
     const pptx = new PptxGenJS();
 
-    // 16:9
+    /**
+     * Explicitly set landscape orientation (16:9) for the generated PPT.
+     * PptxGenJS uses predefined layouts; LAYOUT_WIDE corresponds to 13.333" x 7.5" (landscape).
+     */
     pptx.layout = "LAYOUT_WIDE";
 
     // Basic metadata
@@ -142,8 +145,9 @@ function App() {
       lang: "en-US",
     };
 
-    const slideW = 13.333; // inches for wide (PptxGenJS wide)
-    const slideH = 7.5;
+    // Keep all geometry in sync with the WIDE layout above.
+    const slideW = 13.333; // inches
+    const slideH = 7.5; // inches
 
     const bg = "FFFFFF";
     const text = theme.text.replace("#", "");
